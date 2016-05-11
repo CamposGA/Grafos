@@ -119,7 +119,7 @@ void printGraph (GRAPH *graph) {
     int i;
 
     for (i = 0; i < graph->nEdges; i++) {
-        printf ("%d-(%d)- %d\n", graph->edges[i].v1->value, graph->edges[i].value, graph->edges[i].v2->value);
+        printf ("%d-(%lf)- %d\n", graph->edges[i].v1->value, graph->edges[i].value, graph->edges[i].v2->value);
     }
 }
 
