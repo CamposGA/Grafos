@@ -18,18 +18,16 @@ typedef struct graph GRAPH;
 
 GRAPH* createGraph(void);
 void eraseGraph(GRAPH* g);
-void insertVertex(GRAPH* g, int o);
-void insertEdge(GRAPH* g, int v, int w, int o);
+void insertVertex(GRAPH* g, double o);
+void insertEdge(GRAPH* g, int v, int w, double o);
 
 int numVertices(GRAPH* g);
 int numEdges(GRAPH* g);
-
-int *graphBFS (GRAPH *g, int v);
 int *incidentEdges(GRAPH *g, int n);
 int opposite(GRAPH *g, int i, int v);
 
 GRAPH* BellmanFord (GRAPH *g, int ini);
-int getMin (GRAPH *g, int ini, int fim);
+double getMin (GRAPH *g, int ini, int fim);
 int *getMenorCaminho (GRAPH *g, int ini, int fim, int *vSize);
 
 void printGraph(GRAPH *graph);
