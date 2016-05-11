@@ -14,12 +14,12 @@ _._._._._._._._._._._._._._._._._._._._._.*/
 #include "graph.h"
 
 
-int cost;
-int hotel;
+double cost;
+double hotel;
 
 GRAPH *makeGraph (int vertex, int edges);
 int *getFriends (int nFriends);
-int choose (GRAPH *mapa, int *amigos, int nAmigos, int cidade, int *iMin);
+double choose (GRAPH *mapa, int *amigos, int nAmigos, int cidade, int *iMin);
 void printIntVector (int *v, int n);
 
 int main (int argc, char *argv[]) {
@@ -32,15 +32,15 @@ int main (int argc, char *argv[]) {
     int *amigos = NULL;
     int mAmigo;
 
+    double tCusto;
     int cidade;
-    int tCusto;
     int op;
 
     GRAPH *mapa = NULL;
 
     /*Recebendo entradas iniciais*/
     scanf("%d", &nCidades);
-    scanf ("%d %d", &cost, &hotel);
+    scanf ("%lf %lf", &cost, &hotel);
     scanf("%d", &nCaminhos);
 
     /*Modelando o problema em um grafo*/
@@ -57,14 +57,14 @@ int main (int argc, char *argv[]) {
    
     switch (op) {
         
-        case 1: printf("%.3d\n", tCusto);
+        case 1: printf("%.3lf\n", tCusto);
                 break;
         case 2: printIntVector(menorCaminho, nMenor);
                 printf("\n");
                 break;
         case 3: if (mAmigo == -1) printf("Atende ");
                 else printf("Repassa ");
-                printf("%.3d\n", tCusto);
+                printf("%.3lf\n", tCusto);
                 break;
     
         default: break;
@@ -78,12 +78,12 @@ void printIntVector (int *v, int n) {
     for (i = n-1; i >= 0; i--) printf ("%d ", v[i]);
 }
 
-int choose (GRAPH *mapa, int *amigos, int nAmigos, int cidade, int *iMin) {
+double choose (GRAPH *mapa, int *amigos, int nAmigos, int cidade, int *iMin) {
     int i;
-    int x;
+    double x;
 
-    int min = INT_MAX;
-    int jMin;
+    double min = (double) INT_MAX;
+    double jMin;
 
 
     for (i = 0; i < nAmigos; i++) {
@@ -97,12 +97,12 @@ int choose (GRAPH *mapa, int *amigos, int nAmigos, int cidade, int *iMin) {
     }
 
     jMin = getMin (mapa, 1, cidade);
-    //printf("jMin: %d\nmin: %d\n", jMin, min);
+    //printf("jMin: %d\n\n: %d\n", jMin, min);
 
     jMin += hotel;
     min += cost;
     
-    (*iMin) = jMin <= min ? 10 : (*iMin); 
+    (*iMin) = jMin <= min ? -1 : (*iMin); 
     return jMin <= min ? jMin : min;  
 
 }
@@ -122,7 +122,7 @@ int *getFriends (int nFriends) {
 GRAPH *makeGraph (int vertex, int edges) {
     GRAPH *grafo = NULL;
     int cidade1, cidade2;
-    int valor;
+    double valor;
     int i, j;
 
     grafo = createGraph();
@@ -134,7 +134,7 @@ GRAPH *makeGraph (int vertex, int edges) {
 
 
     for (i = 0; i < edges; i++) {
-        scanf ("%d %d %d", &cidade1, &cidade2, &valor);
+        scanf ("%d %d %lf", &cidade1, &cidade2, &valor);
         insertEdge (grafo, cidade1, cidade2, valor);
     }
 
