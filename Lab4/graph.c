@@ -11,7 +11,7 @@ struct vertex {
 	int nEdges;
     VERTEX * parent;
 
-	int distancia;;
+	double distancia;;
 };
 
 /* Edge */
@@ -19,7 +19,7 @@ struct edge {
     VERTEX *v1;
     VERTEX *v2;
 
-    int value;
+    double value;
 };
 
 /* Graph
@@ -58,7 +58,7 @@ void eraseGraph(GRAPH* g) {
 }
 
 /* Função para adicionar um vértice ao grafo */
-void insertVertex(GRAPH* g, int o) {
+void insertVertex(GRAPH* g, double o) {
     int i;
 
     g->vertices = (VERTEX *) realloc(g->vertices, (g->nVertices + 1) * sizeof(VERTEX));
@@ -75,7 +75,7 @@ void insertVertex(GRAPH* g, int o) {
 }
 
 /* Função para adicionar uma aresta ao grafo */
-void insertEdge(GRAPH* g, int v, int w, int o)  {
+void insertEdge(GRAPH* g, int v, int w, double o)  {
     int i;
 
     g->edges = (EDGE *) realloc (g->edges, ((g->nEdges + 1) * sizeof(EDGE)));
@@ -119,7 +119,7 @@ void printGraph (GRAPH *graph) {
     int i;
 
     for (i = 0; i < graph->nEdges; i++) {
-        printf ("%d(%d) -(%d)- %d\n", graph->edges[i].v1->value, graph->edges[i].v1->nEdges, graph->edges[i].value, graph->edges[i].v2->value);
+        printf ("%d-(%d)- %d\n", graph->edges[i].v1->value, graph->edges[i].value, graph->edges[i].v2->value);
     }
 }
 
@@ -177,7 +177,7 @@ GRAPH *BellmanFord (GRAPH* g, int ini) {
     return NULL;
 }
 
-int getMin (GRAPH *g, int ini, int fim) {
+double getMin (GRAPH *g, int ini, int fim) {
     
     if (BellmanFord (g, ini)) {
         return g->vertices[fim].distancia;
