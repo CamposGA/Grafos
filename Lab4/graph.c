@@ -65,8 +65,7 @@ void insertVertex(GRAPH* g, double o) {
 
     g->vertices[g->nVertices].value = o;
 
-    g->vertices[g->nVertices].edges = (int *) malloc (4 * sizeof(int));
-    for (i = 0; i < 4; i++) g->vertices[g->nVertices].edges[i] = -1;
+    g->vertices[g->nVertices].edges = NULL;
 
     g->vertices[g->nVertices].nEdges = 0;
     g->vertices[g->nVertices].parent = NULL;
@@ -84,10 +83,13 @@ void insertEdge(GRAPH* g, int v, int w, double o)  {
     g->edges[g->nEdges].v1 = &g->vertices[v];
     g->edges[g->nEdges].v2 = &g->vertices[w];
 
-   
+  
+    g->vertices[v].edges = (int *) realloc (g->vertices[v].edges, (g->vertices[v].nEdges + 1) * sizeof(int));
     g->vertices[v].edges[g->vertices[v].nEdges] = g->nEdges;
     g->vertices[v].nEdges++;
 
+
+    g->vertices[w].edges = (int *) realloc (g->vertices[w].edges, (g->vertices[w].nEdges + 1) * sizeof(int));
     g->vertices[w].edges[g->vertices[w].nEdges] = g->nEdges;
     g->vertices[w].nEdges++;
 
