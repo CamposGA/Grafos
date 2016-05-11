@@ -1,0 +1,30 @@
+N~ao ha colegas nas cidades vizinhas
+Continuara atendendo V + H < PA
+Pagamento coleguinha (PA): X + VA
+Amigo mais barato ganha (mais proximos ao cliente)
+
+
+ENTRADAS:
+    N - Quantidade de cidades (int)
+    X - Valor pago ao colega (double)
+    H - Hospedagem (double)
+    M - Caminhos entre as cidades (int)
+        <id_cidade>  <id_cidade> <V - valor> (int int double)
+    C - Quantidade de amigos (int)
+        <id_cidade>  (int)
+    * - Tipo de saida (int)
+    * - CIdade do cliente (int)
+
+OBS: 
+    N <= 50
+    M <= 200
+    C <= 10
+    X > H
+    Joao mora na cidade 1
+
+TIPOS DE SAIDA:
+    1 - Custo do menor caminho entre a cidade 1 e a CIdade do cliente (3 casas de precisao)
+    2 - Caminho minimo entre joao e a cidade consultada
+    3 - 
+        Atende (joao) preço (3 casas)
+        Repassa (colega) preço (3 casas)
