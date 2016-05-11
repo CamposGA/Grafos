@@ -54,6 +54,14 @@ GRAPH* createGraph() {
 /* Apaga um grafo */
 void eraseGraph(GRAPH* g) {
     /* Libera o espaço em memória alocado pela função createGraph() */
+    int i, j;
+
+    for (i = 0; i < g->nVertices; i++) {
+        free (g->vertices[i].edges);
+    }
+    
+    free (g->vertices);
+    free (g->edges);
     free(g);
 }
 
