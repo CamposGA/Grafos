@@ -3,7 +3,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "filas.h"
 #include <limits.h>
 
 #define MAX_VERTICES 20
